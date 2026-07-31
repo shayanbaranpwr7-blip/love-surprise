@@ -510,3 +510,161 @@ setTimeout(()=>{
     });
 
 },42000);
+// ===== Part 6 =====
+
+const ending = document.createElement("div");
+
+ending.style.position = "fixed";
+ending.style.left = "50%";
+ending.style.top = "80%";
+ending.style.transform = "translate(-50%,-50%)";
+ending.style.color = "#fff";
+ending.style.fontSize = "42px";
+ending.style.fontFamily = "'Cormorant Garamond', serif";
+ending.style.opacity = "0";
+ending.style.transition = "2s";
+ending.style.zIndex = "10";
+ending.innerHTML = "I love you, Sheyda 🤍";
+
+document.body.appendChild(ending);
+
+setTimeout(() => {
+    ending.style.opacity = "1";
+}, 45000);
+// ===== Part 7 =====
+
+// Galaxy Drift
+gsap.to(galaxy.rotation,{
+    z:0.4,
+    duration:180,
+    repeat:-1,
+    yoyo:true,
+    ease:"sine.inOut"
+});
+
+// Pulse
+gsap.to(material,{
+    opacity:1,
+    duration:2,
+    repeat:-1,
+    yoyo:true,
+    ease:"sine.inOut"
+});
+
+// More Hearts
+setInterval(()=>{
+
+    if(started){
+
+        createHeart();
+
+    }
+
+},1200);
+
+// Ending Zoom
+
+setTimeout(()=>{
+
+    gsap.to(camera.position,{
+
+        z:250,
+
+        duration:15,
+
+        ease:"power2.inOut"
+
+    });
+
+},35000);
+
+// White Flash
+
+const flash=document.createElement("div");
+
+flash.style.position="fixed";
+flash.style.left="0";
+flash.style.top="0";
+flash.style.width="100%";
+flash.style.height="100%";
+flash.style.background="#fff";
+flash.style.opacity="0";
+flash.style.pointerEvents="none";
+flash.style.zIndex="999";
+
+document.body.appendChild(flash);
+
+setTimeout(()=>{
+
+    gsap.to(flash,{
+
+        opacity:.25,
+
+        duration:1,
+
+        yoyo:true,
+
+        repeat:1
+
+    });
+
+},44800);
+// ===== Part 8 =====
+
+// Cinematic Ending
+
+setTimeout(()=>{
+
+    gsap.to("#overlay",{
+        opacity:0,
+        duration:5
+    });
+
+    gsap.to(camera.position,{
+        z:120,
+        duration:20,
+        ease:"power2.inOut"
+    });
+
+},52000);
+
+// Final Text
+
+const finalText=document.createElement("div");
+
+finalText.style.position="fixed";
+finalText.style.left="50%";
+finalText.style.top="50%";
+finalText.style.transform="translate(-50%,-50%)";
+finalText.style.fontSize="58px";
+finalText.style.fontFamily="'Cormorant Garamond', serif";
+finalText.style.color="#fff";
+finalText.style.opacity="0";
+finalText.style.textAlign="center";
+finalText.style.textShadow="0 0 25px rgba(255,255,255,.45)";
+finalText.style.zIndex="999";
+
+finalText.innerHTML=`
+Forever,
+<br>
+Sheyda 🤍
+`;
+
+document.body.appendChild(finalText);
+
+setTimeout(()=>{
+
+    gsap.to(finalText,{
+        opacity:1,
+        duration:4
+    });
+
+},56000);
+
+// Slow Stars
+
+setInterval(()=>{
+
+    galaxy.rotation.y+=0.00004;
+
+},16);
