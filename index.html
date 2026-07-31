@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loading...</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#000;
+overflow:hidden;
+font-family:Arial,Helvetica,sans-serif;
+color:white;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+#loading{
+text-align:center;
+}
+
+#loading h1{
+font-size:38px;
+margin-bottom:30px;
+letter-spacing:2px;
+}
+
+#text{
+font-size:22px;
+color:#00ffee;
+}
+
+.cursor{
+display:inline-block;
+animation:blink .8s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+canvas{
+position:fixed;
+left:0;
+top:0;
+z-index:-1;
+}
+</style>
+
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<div id="loading">
+<h1>Initializing...</h1>
+<div id="text"></div>
+</div>
+
+<script>
+
+const messages=[
+"Loading mathematical engine...",
+"Analyzing equations...",
+"Searching for the perfect answer...",
+"Calculating...",
+"Almost Ready..."
+];
+
+let i=0;
+
+let text=document.getElementById("text");
+
+function type(){
+
+if(i>=messages.length){
+
+text.innerHTML="Completed ✔";
+
+return;
+
+}
+
+let msg=messages[i];
+
+let j=0;
+
+text.innerHTML="";
+
+let inter=setInterval(()=>{
+
+text.innerHTML=msg.substring(0,j)+"<span class='cursor'>|</span>";
+
+j++;
+
+if(j>msg.length){
+
+clearInterval(inter);
+
+i++;
+
+setTimeout(type,700);
+
+}
+
+},40);
+
+}
+
+type();
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+let stars=[];
+
+for(let i=0;i<250;i++){
+
+stars.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+r:Math.random()*2,
+
+s:Math.random()*0.5+0.2
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(st=>{
+
+ctx.beginPath();
+
+ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
+
+ctx.fill();
+
+st.y+=st.s;
+
+if(st.y>canvas.height){
+
+st.y=0;
+
+st.x=Math.random()*canvas.width;
+
+}
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
