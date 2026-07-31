@@ -163,3 +163,75 @@ renderer.render(scene,camera);
 }
 
 animate();
+
+// ===========================
+// Love Surprise - Part 2
+// ===========================
+
+// Overlay Elements
+const startButton = document.getElementById("startButton");
+const subtitleBox = document.getElementById("subtitleBox");
+const title = document.getElementById("title");
+const subtitle = document.getElementById("subtitle");
+
+// Initial state
+subtitleBox.style.opacity = "0";
+
+// Story lines
+const story = [
+  "Some equations can be solved...",
+  "Some mysteries can be understood...",
+  "But one feeling keeps growing...",
+  "No theorem could ever prove it...",
+  "Yet my heart already knows the answer.",
+  "For Sheyda 🤍"
+];
+
+let line = 0;
+
+function showNextLine() {
+  if (line >= story.length) return;
+
+  subtitleBox.style.opacity = "0";
+
+  setTimeout(() => {
+    subtitleBox.innerHTML = story[line];
+    subtitleBox.style.opacity = "1";
+    line++;
+  }, 400);
+}
+
+// Start button
+startButton.addEventListener("click", () => {
+
+  startButton.style.display = "none";
+
+  title.style.transition = "2s";
+  subtitle.style.transition = "2s";
+
+  title.style.transform = "translateY(-80px)";
+  subtitle.style.opacity = "0";
+
+  showNextLine();
+
+  setInterval(showNextLine, 5000);
+
+});
+
+// Window resize
+window.addEventListener("resize", () => {
+
+  camera.aspect =
+    window.innerWidth /
+    window.innerHeight;
+
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+  );
+
+  resizeCanvas();
+
+});
