@@ -668,83 +668,10 @@ setInterval(()=>{
     galaxy.rotation.y+=0.00004;
 
 },16);
-let rainStarted = false;
+const button = document.getElementById("startButton");
 
-const rainDrops = [];
+button.addEventListener("click", ()=>{
 
-function createRain(){
-
-    for(let i = 0; i < 120; i++){
-
-        rainDrops.push({
-
-            x: Math.random() * canvas.width,
-
-            y: Math.random() * canvas.height,
-
-            length: Math.random() * 15 + 10,
-
-            speed: Math.random() * 4 + 3
-
-        });
-
-    }
-
-}
-
-
-function drawRain(){
-
-    ctx.strokeStyle = "rgba(180,220,255,0.5)";
-
-    ctx.lineWidth = 1;
-
-    rainDrops.forEach(drop=>{
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            drop.x,
-            drop.y
-        );
-
-        ctx.lineTo(
-            drop.x,
-            drop.y + drop.length
-        );
-
-        ctx.stroke();
-
-
-        drop.y += drop.speed;
-
-
-        if(drop.y > canvas.height){
-
-            drop.y = -20;
-
-            drop.x = Math.random() * canvas.width;
-
-        }
-
-    });
-
-}
-
-
-
-const oldDraw = draw;
-
-
-document.getElementById("startButton")
-.addEventListener("click",()=>{
-
-    if(!rainStarted){
-
-        createRain();
-
-        rainStarted = true;
-
-    }
+    button.innerText = "Welcome 🤍";
 
 });
