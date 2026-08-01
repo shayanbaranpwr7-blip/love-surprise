@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Sheyda 🤍</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>Hearts 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<canvas id="rain"></canvas>
+    <canvas id="sky"></canvas>
 
-<div id="overlay">
+    <div class="rain-layer"></div>
 
-<h1 id="title">
-For Sheyda 🤍
-</h1>
 
-<p id="subtitle">
-Some feelings are too beautiful to stay unspoken...
-</p>
+    <main class="welcome-box">
 
-<div id="subtitleBox"></div>
+        <h1>For Sheyda 🤍</h1>
 
-<div id="startButton">
-Tap to Begin
-</div>
+        <p>
+            Some feelings are too beautiful to stay unspoken...
+        </p>
 
-</div>
+        <button id="startButton">
+            Tap to Begin
+        </button>
 
-<audio id="rainSound" loop></audio>
+    </main>
 
-<audio id="music" loop></audio>
 
-<audio id="voice"></audio>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
-``
